@@ -15,12 +15,12 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#F9FAFB]/95 dark:bg-[#1F2937]/95 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 shadow-sm"
-    >
+         <motion.nav 
+       initial={{ y: -100, opacity: 0 }}
+       animate={{ y: 0, opacity: 1 }}
+       transition={{ duration: 0.8, ease: "easeOut" }}
+       className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 dark:bg-black/95 backdrop-blur-md border-b border-gray-700/50 dark:border-gray-800/50 shadow-sm"
+     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           {/* Logo oficial animado */}
@@ -28,11 +28,10 @@ export default function Navbar() {
             <motion.div 
               className="relative w-20 h-20 md:w-24 md:h-24 flex items-center justify-center -ml-2"
               whileHover={{ 
-                scale: 1.1, 
-                rotate: [0, -5, 5, 0],
-                transition: { duration: 0.6, ease: "easeInOut" }
+                scale: 1.05,
+                transition: { duration: 0.3, ease: "easeOut" }
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Image
                 src="/images/sportmeetlogooficial2.png"
@@ -48,9 +47,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-8">
             {[
               { href: "#inicio", text: "Inicio" },
+              { href: "#que-es-sportmeet", text: "¿Qué es?" },
               { href: "#como-funciona", text: "Cómo funciona" },
-              { href: "#funcionalidades", text: "Funcionalidades" },
-              { href: "#faq", text: "FAQ" }
+              { href: "#por-que-sportmeet", text: "¿Por qué?" }
             ].map((item, index) => (
               <motion.div
                 key={item.href}
@@ -60,10 +59,10 @@ export default function Navbar() {
                 whileHover={{ y: -2 }}
                 className="relative"
               >
-                <Link 
-                  href={item.href} 
-                  className="text-[#111827] dark:text-white hover:text-[#FF1E1E] transition-all duration-300 font-medium relative group"
-                >
+                                 <Link 
+                   href={item.href} 
+                   className="text-white hover:text-[#FF1E1E] transition-all duration-300 font-medium relative group"
+                 >
                   {item.text}
                   <motion.div
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FF1E1E] group-hover:w-full transition-all duration-300"
@@ -74,19 +73,19 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Botones animados */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.button 
-              onClick={toggleTheme}
-              whileHover={{ 
-                scale: 1.1, 
-                rotate: 180,
-                boxShadow: "0 8px 25px rgba(0,0,0,0.2)"
-              }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#111827] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 relative overflow-hidden group"
-            >
+          {/* Botón de tema */}
+          <div className="hidden md:flex items-center">
+                         <motion.button 
+               onClick={toggleTheme}
+               whileHover={{ 
+                 scale: 1.1, 
+                 rotate: 180,
+                 boxShadow: "0 8px 25px rgba(0,0,0,0.2)"
+               }}
+               whileTap={{ scale: 0.9 }}
+               transition={{ duration: 0.3 }}
+               className="p-2 rounded-full bg-gray-800/50 text-white hover:bg-gray-700/50 transition-all duration-200 relative overflow-hidden group"
+             >
               <motion.svg 
                 className={`w-5 h-5 transition-transform duration-300 ${theme === 'light' ? 'rotate-0' : 'rotate-180'}`} 
                 fill="none" 
@@ -102,32 +101,6 @@ export default function Navbar() {
                 )}
               </motion.svg>
             </motion.button>
-            
-            <motion.button 
-              whileHover={{ 
-                scale: 1.05, 
-                y: -2,
-                boxShadow: "0 12px 30px rgba(255, 30, 30, 0.4)"
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="bg-[#FF1E1E] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#DC2626] transition-all duration-300 relative overflow-hidden group"
-            >
-              <motion.span
-                className="relative z-10"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-              >
-                Descargar App
-              </motion.span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#DC2626] to-[#FF1E1E] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "0%" }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.button>
           </div>
 
           {/* Mobile menu button animado */}
@@ -135,7 +108,7 @@ export default function Navbar() {
             onClick={toggleMenu}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="md:hidden p-2 rounded-xl text-[#111827] dark:text-white hover:text-[#FF1E1E] hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-all duration-300"
+            className="md:hidden p-2 rounded-xl text-white hover:text-[#FF1E1E] hover:bg-gray-800/50 focus:outline-none transition-all duration-300"
           >
             <motion.svg
               className="w-6 h-6"
@@ -161,19 +134,19 @@ export default function Navbar() {
         {/* Mobile Navigation animado */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden bg-[#F9FAFB]/95 dark:bg-[#1F2937]/95 backdrop-blur-md border-t border-gray-200/50 dark:border-gray-700/50 overflow-hidden"
-            >
+                         <motion.div 
+               initial={{ height: 0, opacity: 0 }}
+               animate={{ height: "auto", opacity: 1 }}
+               exit={{ height: 0, opacity: 0 }}
+               transition={{ duration: 0.3, ease: "easeInOut" }}
+               className="md:hidden bg-gray-900/95 dark:bg-black/95 backdrop-blur-md border-t border-gray-700/50 dark:border-gray-800/50 overflow-hidden"
+             >
               <div className="px-4 py-4 space-y-2">
                 {[
                   { href: "#inicio", text: "Inicio" },
+                  { href: "#que-es-sportmeet", text: "¿Qué es?" },
                   { href: "#como-funciona", text: "Cómo funciona" },
-                  { href: "#funcionalidades", text: "Funcionalidades" },
-                  { href: "#faq", text: "FAQ" }
+                  { href: "#por-que-sportmeet", text: "¿Por qué?" }
                 ].map((item, index) => (
                   <motion.div
                     key={item.href}
@@ -183,18 +156,18 @@ export default function Navbar() {
                     whileHover={{ x: 5, scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Link
-                      href={item.href}
-                      className="block px-4 py-3 text-[#111827] dark:text-white hover:text-[#FF1E1E] hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl transition-all duration-300 font-medium"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
+                                         <Link
+                       href={item.href}
+                       className="block px-4 py-3 text-white hover:text-[#FF1E1E] hover:bg-gray-800/50 rounded-xl transition-all duration-300 font-medium"
+                       onClick={() => setIsMenuOpen(false)}
+                     >
                       {item.text}
                     </Link>
                   </motion.div>
                 ))}
                 
                 <motion.div 
-                  className="px-4 py-3 flex items-center justify-between"
+                  className="px-4 py-3 flex items-center justify-center"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.3 }}
@@ -203,7 +176,7 @@ export default function Navbar() {
                     onClick={toggleTheme}
                     whileHover={{ scale: 1.1, rotate: 180 }}
                     whileTap={{ scale: 0.9 }}
-                    className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#111827] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+                    className="p-2 rounded-full bg-gray-800/50 text-white hover:bg-gray-700/50 transition-all duration-200"
                   >
                     <motion.svg 
                       className={`w-5 h-5 transition-transform duration-300 ${theme === 'light' ? 'rotate-0' : 'rotate-180'}`} 
@@ -218,14 +191,6 @@ export default function Navbar() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                       )}
                     </motion.svg>
-                  </motion.button>
-                  
-                  <motion.button 
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="bg-[#FF1E1E] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#DC2626] transition-all duration-300"
-                  >
-                    Descargar App
                   </motion.button>
                 </motion.div>
               </div>
